@@ -8,6 +8,11 @@ body {
 label {
   font-size: 18px;
 }
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .header {
   height: 20vh;
@@ -29,6 +34,19 @@ label {
 
 #searchInput:focus {
   outline: none;
+}
+#searchInput::placeholder {
+  transform: translateX(5px);
+}
+/* .hidden {
+  visibility: hidden;
+} */
+
+.searchButton {
+  border: none;
+  font-size: 24px;
+  height: 30px;
+  margin-left: 5px;
 }
 
 .listField {

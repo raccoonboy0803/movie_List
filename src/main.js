@@ -7,6 +7,8 @@ const options = {
   },
 };
 
+const inputElement = document.querySelector('#searchInput');
+
 async function fetchDataAndPopulateDOM() {
   try {
     const listFieldElement = document.querySelector('.listField');
@@ -55,3 +57,11 @@ async function fetchDataAndPopulateDOM() {
 }
 
 window.addEventListener('DOMContentLoaded', fetchDataAndPopulateDOM);
+
+const originalPlaceholder = inputElement.placeholder;
+inputElement.addEventListener('focus', function () {
+  this.placeholder = '';
+});
+inputElement.addEventListener('blur', function () {
+  this.placeholder = originalPlaceholder;
+});
