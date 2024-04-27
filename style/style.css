@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(241, 244, 235);
+}
+label {
+  font-size: 18px;
+}
+
+.header {
+  height: 20vh;
+  text-align: center;
+  font-family: 'Noto Sans', sans-serif;
+  margin-bottom: 100px;
+}
+
+.headerTitle {
+  font-size: 48px;
+  margin: 20px 0 50px 0;
+}
+
+#searchInput {
+  height: 30px;
+  width: 25vw;
+  margin-left: 10px;
+}
+
+#searchInput:focus {
+  outline: none;
+}
+
+.listField {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.cardItem {
+  display: flex;
+  width: 45vw;
+  height: 33vh;
+  background-color: white;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  margin-bottom: 60px;
+}
+
+.cardItem:hover {
+  transform: scale(1.01);
+  transition: transform 300ms ease-in;
+}
+
+.cardImg {
+  transform: translate(20px, -20px);
+}
+
+.cardDescription {
+  position: relative;
+  margin-left: 40px;
+  padding: 0 10px;
+  overflow-y: auto;
+}
+
+.descVoteAvg,
+.descReleaseDate,
+.descOverview {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.descVoteAvg,
+.descReleaseDate {
+  margin: 0;
+}
+
+.descOverview {
+  top: 200px;
+  max-height: 15vh;
+  overflow-y: auto;
+}
