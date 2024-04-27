@@ -7,8 +7,6 @@ const options = {
   },
 };
 
-const CardItemElement = document.querySelector('.cardItem');
-
 async function fetchDataAndPopulateDOM() {
   try {
     const listFieldElement = document.querySelector('.listField');
@@ -30,7 +28,7 @@ async function fetchDataAndPopulateDOM() {
     let allCardHtml = ``;
 
     data.results.map((item) => {
-      const tempHtml = `<div class="cardItem">
+      const tempHtml = `<div class="cardItem" data-id=${item.id}>
       <img src="${imgRoot}${item.poster_path}" alt="movie_img" class="cardImg" />
       <div class="cardDescription">
         <h2 class="descTitle">${item.title}</h2>
@@ -44,6 +42,13 @@ async function fetchDataAndPopulateDOM() {
     });
 
     listFieldElement.innerHTML = allCardHtml;
+
+    const cardItemArray = [...listFieldElement.querySelectorAll('.cardItem')];
+    cardItemArray.map((item) => {
+      item.addEventListener('click', () => {
+        alert(`영화 id: ${item.dataset.id}`);
+      });
+    });
   } catch (error) {
     console.error(error);
   }
