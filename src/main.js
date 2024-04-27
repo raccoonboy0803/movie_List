@@ -80,6 +80,7 @@ async function fetchDataAndPopulateDOM() {
 }
 
 window.addEventListener('DOMContentLoaded', fetchDataAndPopulateDOM);
+window.addEventListener('load', () => inputElement.focus());
 
 const originalPlaceholder = inputElement.placeholder;
 inputElement.addEventListener('focus', function () {
