@@ -41,30 +41,20 @@ async function fetchDataAndPopulateDOM() {
 
     buttonElement.addEventListener('click', (event) => {
       event.preventDefault();
-      allCardHtml = ``;
+      const keyword = inputElement.value.toLowerCase();
+      const elementArray = listFieldElement.querySelectorAll('.cardItem');
 
-      const fileredData = data.results.filter((item) =>
-        item.original_title
-          .toLowerCase()
-          .includes(inputElement.value.toLowerCase())
-      );
-      if (fileredData.length === 0) {
-        listFieldElement.innerText = 'There is no movie you are looking for';
+      for (let i = 0; i < elementArray.length; i++) {
+        const movieTitle = elementArray[i]
+          .querySelector('div')
+          .querySelector('.descTitle')
+          .innerText.toLowerCase();
+        if (!movieTitle.includes(keyword)) {
+          elementArray[i].classList.add('hidden');
+        } else {
+          elementArray[i].classList.remove('hidden');
+        }
       }
-      fileredData.map((item) => {
-        const filterdTempHtml = `<div class="cardItem" data-id=${item.id}>
-        <img src="${imgRoot}${item.poster_path}" alt="movie_img" class="cardImg" />
-        <div class="cardDescription">
-          <h2 class="descTitle">${item.title}</h2>
-          <p class="descVoteAvg">rating : ${item.vote_average}</p>
-          <p class="descReleaseDate">release : ${item.release_date}</p>
-          <p class="descOverview">${item.overview}</p>
-        </div>
-      </div>`;
-
-        allCardHtml += filterdTempHtml;
-      });
-      listFieldElement.innerHTML = allCardHtml;
     });
   } catch (error) {
     console.error(error);
