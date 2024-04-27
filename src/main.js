@@ -12,7 +12,6 @@ async function fetchDataAndPopulateDOM() {
     );
 
     const data = await response.json();
-    console.log('data::', data.results);
     const imgRoot = 'https://image.tmdb.org/t/p/w200';
 
     let allCardHtml = ``;
