@@ -49,28 +49,33 @@ async function fetchDataAndPopulateDOM() {
     // returnButton.classList.add('returnBtn');
     // returnButton.innerText = 'return';
 
+    const elementArray = listFieldElement.querySelectorAll('.cardItem');
+
     buttonElement.addEventListener('click', (event) => {
       event.preventDefault();
       const keyword = inputElement.value.toLowerCase();
-      const elementArray = listFieldElement.querySelectorAll('.cardItem');
-
-      let isFind = false;
 
       for (let i = 0; i < elementArray.length; i++) {
-        isFind = false;
         const movieTitle = elementArray[i]
           .querySelector('div')
           .querySelector('.descTitle')
           .innerText.toLowerCase();
+
         if (!movieTitle.includes(keyword)) {
           elementArray[i].classList.add('hidden');
         } else {
           elementArray[i].classList.remove('hidden');
-          isFind = true;
         }
       }
-      if (!isFind) {
+
+      const result = Array.from(elementArray).every((item) => {
+        return item.className.includes('hidden');
+      });
+
+      if (result) {
         notFoundContainer.classList.remove('hidden');
+      } else {
+        notFoundContainer.classList.add('hidden');
       }
     });
   } catch (error) {
