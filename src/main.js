@@ -3,6 +3,8 @@ import options from './options.js';
 const listFieldElement = document.querySelector('.listField');
 const inputElement = document.querySelector('#searchInput');
 const buttonElement = document.querySelector('.searchButton');
+const notFoundContainer = document.querySelector('.notFoundContainer');
+const returnBtn = document.querySelector('.returnBtn');
 
 async function fetchDataAndPopulateDOM() {
   try {
@@ -39,12 +41,23 @@ async function fetchDataAndPopulateDOM() {
       });
     });
 
+    // const notFoundText = document.createElement('p');
+    // notFoundText.classList.add('notFound');
+    // notFoundText.innerText = '검색결과가 없습니다';
+
+    // const returnButton = document.createElement('button');
+    // returnButton.classList.add('returnBtn');
+    // returnButton.innerText = 'return';
+
     buttonElement.addEventListener('click', (event) => {
       event.preventDefault();
       const keyword = inputElement.value.toLowerCase();
       const elementArray = listFieldElement.querySelectorAll('.cardItem');
 
+      let isFind = false;
+
       for (let i = 0; i < elementArray.length; i++) {
+        isFind = false;
         const movieTitle = elementArray[i]
           .querySelector('div')
           .querySelector('.descTitle')
@@ -53,7 +66,11 @@ async function fetchDataAndPopulateDOM() {
           elementArray[i].classList.add('hidden');
         } else {
           elementArray[i].classList.remove('hidden');
+          isFind = true;
         }
+      }
+      if (!isFind) {
+        notFoundContainer.classList.remove('hidden');
       }
     });
   } catch (error) {
@@ -70,4 +87,8 @@ inputElement.addEventListener('focus', function () {
 });
 inputElement.addEventListener('blur', function () {
   this.placeholder = originalPlaceholder;
+});
+
+returnBtn.addEventListener('click', () => {
+  window.location.reload();
 });

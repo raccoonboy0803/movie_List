@@ -40,7 +40,6 @@ form {
 }
 
 .searchButton {
-  border: none;
   font-size: 24px;
   height: 30px;
   margin-left: 5px;
@@ -97,4 +96,20 @@ form {
   top: 200px;
   max-height: 15vh;
   overflow-y: auto;
+}
+
+.notFoundContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notFound {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 48px;
+  margin-right: 20px;
+}
+
+.returnBtn {
+  font-size: 28px;
 }
