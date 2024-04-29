@@ -41,14 +41,6 @@ async function fetchDataAndPopulateDOM() {
       });
     });
 
-    // const notFoundText = document.createElement('p');
-    // notFoundText.classList.add('notFound');
-    // notFoundText.innerText = '검색결과가 없습니다';
-
-    // const returnButton = document.createElement('button');
-    // returnButton.classList.add('returnBtn');
-    // returnButton.innerText = 'return';
-
     const elementArray = listFieldElement.querySelectorAll('.cardItem');
 
     buttonElement.addEventListener('click', (event) => {
